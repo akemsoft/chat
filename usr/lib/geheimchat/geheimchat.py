@@ -161,13 +161,15 @@ def auth(widget, _builder, _password, _name):
     builder.get_object("send").connect("clicked", sendgtk, builder.get_object("message"))
     builder.get_object("auth_win").destroy()
     builder.get_object("main_win").connect("delete-event", quit_everything)
+    builder.get_object("main_win").set_icon_name("hipchat")
     builder.get_object("main_win").show()
 
 if __name__ == "__main__":
     builder = Gtk.Builder()
-    builder.add_from_file("chat.ui")
+    builder.add_from_file("/usr/share/geheimchat/geheimchat.ui")
     builder.get_object("login").connect("clicked", auth, builder, builder.get_object("password_entry"), builder.get_object("name_entry"))
     builder.get_object("auth_win").connect("delete-event", Gtk.main_quit)
+    builder.get_object("auth_win").set_icon_name("hipchat")
     builder.get_object("auth_win").show()
     check_for_update(builder.get_object("auth_win"))
     Gtk.main()

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Geheimchat
+Comment=Der Akemsoft-Geheimchat
+Type=Application
+Icon=hipchat
+Exec=geheimchat
+Terminal=false
+Categories=Internet;GTK;GNOME
+Keywords=chat;geheim;akem

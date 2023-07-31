@@ -121,6 +121,7 @@
   </object>
   <object class="GtkWindow" id="main_win">
     <property name="can-focus">False</property>
+    <property name="icon-name">hipchat</property>
     <child>
       <object class="GtkBox">
         <property name="visible">True</property>
