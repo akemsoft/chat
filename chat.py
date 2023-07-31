@@ -6,15 +6,92 @@ import requests
 import traceback
 import threading
 import cryptocode
-import tkinter
+import webbrowser
 
 gi.require_version("Gtk", "3.0")
-from gi.repository import Gtk, GObject
+from gi.repository import Gtk, GLib
+
+from urllib.parse import quote
+
+def _async(func):
+    def wrapper(*args, **kwargs):
+        thread = threading.Thread(target=func, args=args, kwargs=kwargs)
+        thread.daemon = True
+        thread.start()
+        return thread
+    return wrapper
 
 def idle_function(func):
     def wrapper(*args):
-        GObject.idle_add(func, *args)
+        GLib.idle_add(func, *args)
     return wrapper
+
+def check_for_update(window):
+    installed_version = "__DEB_VERSION__"
+    error = False
+    try:
+        # Wait a second
+        time.sleep(1)
+        latest_version = requests.get("https://akemsoft.com/geheimchat/version").content.decode()
+    except Exception as e:
+        error = True
+        errormsg = str(e)
+
+    if error:
+        show_update_info(window, "exception", errormsg)
+    elif installed_version == latest_version:
+        show_update_info(window, "uptodate", installed_version)
+    elif "." in latest_version:
+        show_update_info(window, "outofdate", installed_version, latest_version)
+    else:
+        show_update_info(window, "error", latest_version)
+
+@idle_function
+def show_update_info(window, info, installed, latest=None):
+    if info == "uptodate":
+        dialog = Gtk.MessageDialog(message_type=Gtk.MessageType.INFO)
+        dialog.set_transient_for(window)
+        dialog.add_buttons(Gtk.STOCK_OK, Gtk.ResponseType.OK)
+        dialog.set_title("Geheimchat-Updater")
+        dialog.set_property("text", "Kein Update verfügbar")
+        dialog.format_secondary_text("Sie benutzen die neueste Version vom Geheimchat (%s)" % installed)
+        dialog.show()
+        dialog.run()
+        dialog.destroy()
+    elif info == "outofdate":
+        dialog = Gtk.MessageDialog(message_type=Gtk.MessageType.WARNING)
+        dialog.set_transient_for(window)
+        dialog.add_buttons("Ignorieren", Gtk.ResponseType.CANCEL, "Aktualisieren", Gtk.ResponseType.YES)
+        dialog.set_title("Geheimchat-Updater")
+        dialog.set_property("text", "Update verfügbar")
+        dialog.format_secondary_text("Sie benutzen NICHT die neueste Version vom Geheimchat. Geheimchat %s ist verfügbar. (Sie benutzen Geheimchat %s)" % (latest, installed))
+        dialog.show()
+        if dialog.run() == Gtk.ResponseType.YES:
+            run_updater(installed)
+        dialog.destroy()
+    elif info == "exception":
+        dialog = Gtk.MessageDialog(message_type=Gtk.MessageType.WARNING)
+        dialog.set_transient_for(window)
+        dialog.add_buttons(Gtk.STOCK_OK, Gtk.ResponseType.OK)
+        dialog.set_title("Geheimchat-Updater")
+        dialog.set_property("text", "Fehler")
+        dialog.format_secondary_text("Die Suche nach einer neuen Version von Geheimchat ist fehlgeschlagen. Fehlermeldung: %s" % installed)
+        dialog.show()
+        dialog.run()
+        dialog.destroy()
+    elif info == "error":
+        dialog = Gtk.MessageDialog(message_type=Gtk.MessageType.WARNING)
+        dialog.set_transient_for(window)
+        dialog.add_buttons(Gtk.STOCK_OK, Gtk.ResponseType.OK)
+        dialog.set_title("Geheimchat-Updater")
+        dialog.set_property("text", "Fehler")
+        dialog.format_secondary_text("Die Suche nach einer neuen Version von Geheimchat ist fehlgeschlagen. Der Server gab eine ungültige Version zurück: %s" % installed)
+        dialog.show()
+        dialog.run()
+        dialog.destroy()
+
+def run_updater(installed_version):
+    webbrowser.open(f"https://akemsoft.com/geheimchat/update?v={quote(installed_version)}")
 
 def send(name, message, password):
     try:
@@ -92,4 +169,5 @@ if __name__ == "__main__":
     builder.get_object("login").connect("clicked", auth, builder, builder.get_object("password_entry"), builder.get_object("name_entry"))
     builder.get_object("auth_win").connect("delete-event", Gtk.main_quit)
     builder.get_object("auth_win").show()
+    check_for_update(builder.get_object("auth_win"))
     Gtk.main()
