@@ -1,3 +1,9 @@
+geheimchat (1.0.1) jammy; urgency=medium
+
+  * Add titlebar title and add Network category to menu (instead of Internet)
+
+ -- carlosmintfan <118076740+carlosmintfan@users.noreply.github.com>  Mon, 31 Jul 2023 20:08:14 -0400
+
 geheimchat (1.0.0) jammy; urgency=medium
 
   * Initial release.
