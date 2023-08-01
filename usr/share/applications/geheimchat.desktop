@@ -5,5 +5,5 @@ Type=Application
 Icon=hipchat
 Exec=geheimchat
 Terminal=false
-Categories=Internet;GTK;GNOME
+Categories=Network;GTK;GNOME
 Keywords=chat;geheim;akem
