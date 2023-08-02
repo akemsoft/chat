@@ -186,10 +186,13 @@
           </packing>
         </child>
         <child>
-          <object class="GtkTextView" id="history">
+          <object class="GtkButton" id="send">
+            <property name="label" translatable="yes">Senden</property>
             <property name="visible">True</property>
             <property name="can-focus">True</property>
-            <property name="editable">False</property>
+            <property name="can-default">True</property>
+            <property name="has-default">True</property>
+            <property name="receives-default">True</property>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -198,13 +201,10 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="send">
-            <property name="label" translatable="yes">Senden</property>
+          <object class="GtkTextView" id="history">
             <property name="visible">True</property>
             <property name="can-focus">True</property>
-            <property name="can-default">True</property>
-            <property name="has-default">True</property>
-            <property name="receives-default">True</property>
+            <property name="editable">False</property>
           </object>
           <packing>
             <property name="expand">False</property>
