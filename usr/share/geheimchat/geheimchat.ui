@@ -201,10 +201,17 @@
           </packing>
         </child>
         <child>
-          <object class="GtkTextView" id="history">
+          <object class="GtkScrolledWindow">
             <property name="visible">True</property>
             <property name="can-focus">True</property>
-            <property name="editable">False</property>
+            <property name="shadow-type">in</property>
+            <child>
+              <object class="GtkTextView" id="history">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="editable">False</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
