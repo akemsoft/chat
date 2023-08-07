@@ -104,7 +104,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="login">
+          <object class="GtkButton" id="login_button">
             <property name="label" translatable="yes">Loslegen</property>
             <property name="visible">True</property>
             <property name="can-focus">True</property>
@@ -121,7 +121,7 @@
       </object>
     </child>
   </object>
-  <object class="GtkWindow" id="main_win">
+  <object class="GtkWindow" id="chat_win">
     <property name="can-focus">False</property>
     <property name="title" translatable="yes">Geheimchat</property>
     <property name="icon-name">hipchat</property>
@@ -167,7 +167,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="message">
+              <object class="GtkEntry" id="message_entry">
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="activates-default">True</property>
@@ -186,7 +186,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="send">
+          <object class="GtkButton" id="send_button">
             <property name="label" translatable="yes">Senden</property>
             <property name="visible">True</property>
             <property name="can-focus">True</property>
