@@ -1,3 +1,16 @@
+geheimchat (1.0.2) jammy; urgency=medium
+
+  * geheimchat.ui: Make chat history textview non-editable
+  * geheimchat.ui: Place send button before textview
+  * geheimchat.ui: Place textview into a GtkScrolledWindow
+  * geheimchat.ui: Expand history textview
+  * debian/control: Fix missing comma
+  * Add glib schema
+  * geheimchat.ui: Minor changes (rename some ids)
+  * geheimchat.py: GApplication, Notifications and StatusIcon
+
+ -- carlosmintfan <118076740+carlosmintfan@users.noreply.github.com>  Mon, 07 Aug 2023 15:20:39 -0400
+
 geheimchat (1.0.1) jammy; urgency=medium
 
   * Add titlebar title and add Network category to menu (instead of Internet)
