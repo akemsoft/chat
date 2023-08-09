@@ -56,7 +56,10 @@ class MainWindow():
     def __init__(self, application):
         self.application = application
         self.settings = Gio.Settings(schema_id="com.akemsoft.messenger")
+
         Notify.init("Geheimchat")
+        self.stop = False
+
         self.builder = Gtk.Builder()
         self.builder.add_from_file("/usr/share/geheimchat/geheimchat.ui")
 
@@ -259,6 +262,7 @@ class MainWindow():
         return not self.window.get_visible()
 
     def quit(self, widget, data = None):
+        self.stop = True
         self.application.quit()
 
 class ReceiverEngine:
@@ -304,6 +308,10 @@ class AutoReceiverEngine(threading.Thread): # background
                         notification.show()
                         Gtk.main()
                         Gdk.threads_leave()
+                if self.appwin.stop:
+                    return
+            if self.appwin.stop:
+                return
             self.receiver.oldmess = self.receiver.newmess
             self.initial_run = False
             time.sleep(2)
