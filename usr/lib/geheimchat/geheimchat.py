@@ -167,7 +167,7 @@ class MainWindow():
             dialog.format_secondary_text("Sie benutzen NICHT die neueste Version vom Geheimchat. Geheimchat %s ist verfügbar. (Sie benutzen Geheimchat %s)" % (latest, installed))
             dialog.show()
             if dialog.run() == Gtk.ResponseType.YES:
-                run_updater(installed)
+                self.run_updater(installed)
             dialog.destroy()
         elif info == "exception":
             dialog = Gtk.MessageDialog(message_type=Gtk.MessageType.WARNING)
@@ -190,9 +190,9 @@ class MainWindow():
             dialog.run()
             dialog.destroy()
     
-    def run_updater(installed_version):
+    def run_updater(self, installed_version):
         webbrowser.open(f"https://akemsoft.com/geheimchat/update?v={quote(installed_version)}")
-        exit()
+        self.application.quit()
 
     ### STATUSICON ###
     def on_statusicon_activated(self, icon, button, time):
