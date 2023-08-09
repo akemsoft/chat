@@ -1,3 +1,10 @@
+geheimchat (1.0.3) jammy; urgency=high
+
+  * geheimchat.py: Fix updater
+  * geheimchat.py: Fix quitting
+
+ -- carlosmintfan <118076740+carlosmintfan@users.noreply.github.com>  Wed, 09 Aug 2023 14:38:32 -0400
+
 geheimchat (1.0.2) jammy; urgency=medium
 
   * geheimchat.ui: Make chat history textview non-editable
