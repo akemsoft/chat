@@ -299,15 +299,16 @@ class AutoReceiverEngine(threading.Thread): # background
                     sender, text, date = cryptocode.decrypt(message[0], self.password), cryptocode.decrypt(message[1], self.password), cryptocode.decrypt(message[2], self.password)
                     self.textbuffer_insert(self.appwin.textbuffer.get_end_iter(), f"{date} -- {sender}: {text}\n")
                     if self.appwin.settings.get_boolean("notifications-enabled") and not (self.initial_run or self.appwin.win_focused()):
-                        Gdk.threads_init()
-                        notification = Notify.Notification.new(f"Neue Nachricht von {sender}", f"{text}\n-- {date}", "hipchat")
-                        notification.set_urgency(Notify.Urgency.CRITICAL)
-                        notification.set_timeout(Notify.EXPIRES_NEVER)
-                        notification.add_action("show-window", "Anzeigen", self.appwin.show_window)
-                        notification.connect("closed", Gtk.main_quit)
-                        notification.show()
-                        Gtk.main()
-                        Gdk.threads_leave()
+                        if self.name != sender:
+                            Gdk.threads_init()
+                            notification = Notify.Notification.new(f"Neue Nachricht von {sender}", f"{text}\n-- {date}", "hipchat")
+                            notification.set_urgency(Notify.Urgency.CRITICAL)
+                            notification.set_timeout(Notify.EXPIRES_NEVER)
+                            notification.add_action("show-window", "Anzeigen", self.appwin.show_window)
+                            notification.connect("closed", Gtk.main_quit)
+                            notification.show()
+                            Gtk.main()
+                            Gdk.threads_leave()
                 if self.appwin.stop:
                     return
             if self.appwin.stop:
