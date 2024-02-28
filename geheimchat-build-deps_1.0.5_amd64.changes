@@ -1,0 +1,26 @@
+Format: 1.8
+Date: Tue, 27 Feb 2024 20:16:28 -0300
+Source: geheimchat-build-deps
+Binary: geheimchat-build-deps
+Built-For-Profiles: noudeb
+Architecture: all
+Version: 1.0.5
+Distribution: unstable
+Urgency: low
+Maintainer: Equivs Dummy Package Generator <root@DAVID>
+Changed-By: Equivs Dummy Package Generator <root@DAVID>
+Description:
+ geheimchat-build-deps - build-dependencies for geheimchat
+Changes:
+ geheimchat-build-deps (1.0.5) unstable; urgency=low
+ .
+   * First version
+Checksums-Sha1:
+ 2bf8f7780e9d31ca1037362609b74de91947b166 2092 geheimchat-build-deps_1.0.5_all.deb
+ 3af587883bd6ac53365b964449266ca07ce91ff6 13488 geheimchat-build-deps_1.0.5_amd64.buildinfo
+Checksums-Sha256:
+ 2bb970a1414ea82a811aa1f59381bb9f6f5ec726784afe669d18b9f3cf20da79 2092 geheimchat-build-deps_1.0.5_all.deb
+ 35d1829ae85418fc91e05b51510b409d690f13b98efd951b925ba49c4c616f03 13488 geheimchat-build-deps_1.0.5_amd64.buildinfo
+Files:
+ f49e204c26cbb50c54157df57f2cb144 2092 devel optional geheimchat-build-deps_1.0.5_all.deb
+ 63da1587b5b50dd0bc1d0f928c947192 13488 devel optional geheimchat-build-deps_1.0.5_amd64.buildinfo

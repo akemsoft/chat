@@ -1,0 +1,7 @@
+68dd2aca8e156f0fa3e153d872963559  usr/bin/geheimchat
+e744805e38b5d73ac5f599a2901a8603  usr/lib/geheimchat/geheimchat.py
+2c82f71d8445c716a3877b80ed848cde  usr/share/applications/geheimchat.desktop
+2df87af4f482aa8c4ee2b9d09889ce07  usr/share/doc/geheimchat/changelog.gz
+d41d8cd98f00b204e9800998ecf8427e  usr/share/doc/geheimchat/copyright
+e928a368ca26fae09d632daed0b20af0  usr/share/geheimchat/geheimchat.ui
+c9c05e9245559d80410cecfd8dfc7737  usr/share/glib-2.0/schemas/com.akemsoft.messenger.gschema.xml

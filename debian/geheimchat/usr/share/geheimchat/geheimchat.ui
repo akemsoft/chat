@@ -54,6 +54,7 @@
                 <property name="can-focus">True</property>
                 <property name="visibility">False</property>
                 <property name="invisible-char">*</property>
+                <property name="progress-pulse-step">0</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -173,7 +174,6 @@
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="activates-default">True</property>
-                <property name="placeholder-text" translatable="yes">Nachricht</property>
               </object>
               <packing>
                 <property name="expand">True</property>
