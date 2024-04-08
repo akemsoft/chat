@@ -18,7 +18,7 @@
           <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="label" translatable="yes">Anmelden</property>
+            <property name="label" translatable="yes">Login</property>
             <attributes>
               <attribute name="weight" value="bold"/>
               <attribute name="scale" value="2"/>
@@ -40,7 +40,7 @@
                 <property name="can-focus">False</property>
                 <property name="margin-right">10</property>
                 <property name="margin-end">10</property>
-                <property name="label" translatable="yes">Passwort: </property>
+                <property name="label" translatable="yes">Password: </property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -108,7 +108,7 @@
         </child>
         <child>
           <object class="GtkButton" id="login_button">
-            <property name="label" translatable="yes">Loslegen</property>
+            <property name="label" translatable="yes">Login</property>
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="can-default">True</property>
@@ -140,7 +140,7 @@
           <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="label" translatable="yes">Geheimer Chat</property>
+            <property name="label" translatable="yes">Secret chat</property>
             <attributes>
               <attribute name="weight" value="bold"/>
               <attribute name="scale" value="2"/>
@@ -161,7 +161,7 @@
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="margin-end">10</property>
-                <property name="label" translatable="yes">Nachricht: </property>
+                <property name="label" translatable="yes">Message:</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -190,7 +190,7 @@
         </child>
         <child>
           <object class="GtkButton" id="send_button">
-            <property name="label" translatable="yes">Senden</property>
+            <property name="label" translatable="yes">Send</property>
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="can-default">True</property>

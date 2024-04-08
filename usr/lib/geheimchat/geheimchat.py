@@ -80,15 +80,15 @@ class MainWindow():
         # Initialize statusicon menu
         self.menu = Gtk.Menu()
 
-        self.menuItem1 = Gtk.MenuItem.new_with_label("Minimieren")
+        self.menuItem1 = Gtk.MenuItem.new_with_label("Minimize")
         self.menuItem1.connect('activate', self.minimize_or_open)
         self.menu.append(self.menuItem1)
 
-        self.menuItem2 = Gtk.MenuItem.new_with_label("Benachrichtigungen aus")
+        self.menuItem2 = Gtk.MenuItem.new_with_label("Disable Notifications")
         self.menuItem2.connect('activate', self.on_notifications_enable_toggled)
         self.menu.append(self.menuItem2)
 
-        self.menuItem3 = Gtk.MenuItem.new_with_label("Beenden")
+        self.menuItem3 = Gtk.MenuItem.new_with_label("Quit")
         self.menuItem3.connect('activate', self.quit) #TODO threads...
         self.menu.append(self.menuItem3)
 
@@ -155,9 +155,9 @@ class MainWindow():
             dialog = Gtk.MessageDialog(message_type=Gtk.MessageType.INFO)
             dialog.set_transient_for(self.window)
             dialog.add_buttons(Gtk.STOCK_OK, Gtk.ResponseType.OK)
-            dialog.set_title("Geheimchat-Updater")
-            dialog.set_property("text", "Kein Update verfügbar")
-            dialog.format_secondary_text("Sie benutzen die neueste Version vom Geheimchat (%s)" % installed)
+            dialog.set_title("Secret chat updater")
+            dialog.set_property("text", "No update available")
+            dialog.format_secondary_text("You are using the latest version of Secret Chat (%s)" % installed)
             dialog.show()
             dialog.run()
             dialog.destroy()
@@ -165,9 +165,9 @@ class MainWindow():
             dialog = Gtk.MessageDialog(message_type=Gtk.MessageType.WARNING)
             dialog.set_transient_for(self.window)
             dialog.add_buttons("Ignorieren", Gtk.ResponseType.CANCEL, "Aktualisieren", Gtk.ResponseType.YES)
-            dialog.set_title("Geheimchat-Updater")
-            dialog.set_property("text", "Update verfügbar")
-            dialog.format_secondary_text("Sie benutzen NICHT die neueste Version vom Geheimchat. Geheimchat %s ist verfügbar. (Sie benutzen Geheimchat %s)" % (latest, installed))
+            dialog.set_title("Secret chat updater")
+            dialog.set_property("text", "Update available")
+            dialog.format_secondary_text("You are NOT using the latest version of Secret Chat. Secret chat %s is available. (You are using secret chat %s)" % (latest, installed))
             dialog.show()
             if dialog.run() == Gtk.ResponseType.YES:
                 self.run_updater(installed)
@@ -176,9 +176,9 @@ class MainWindow():
             dialog = Gtk.MessageDialog(message_type=Gtk.MessageType.WARNING)
             dialog.set_transient_for(self.window)
             dialog.add_buttons(Gtk.STOCK_OK, Gtk.ResponseType.OK)
-            dialog.set_title("Geheimchat-Updater")
-            dialog.set_property("text", "Fehler")
-            dialog.format_secondary_text("Die Suche nach einer neuen Version von Geheimchat ist fehlgeschlagen. Fehlermeldung: %s" % error)
+            dialog.set_title("Secret chat updater")
+            dialog.set_property("text", "Error")
+            dialog.format_secondary_text("The search for a new version of Secret Chat failed. Error message: %s" % error)
             dialog.show()
             dialog.run()
             dialog.destroy()
@@ -186,9 +186,9 @@ class MainWindow():
             dialog = Gtk.MessageDialog(message_type=Gtk.MessageType.WARNING)
             dialog.set_transient_for(self.window)
             dialog.add_buttons(Gtk.STOCK_OK, Gtk.ResponseType.OK)
-            dialog.set_title("Geheimchat-Updater")
-            dialog.set_property("text", "Fehler")
-            dialog.format_secondary_text("Die Suche nach einer neuen Version von Geheimchat ist fehlgeschlagen. Der Server gab eine ungültige Version zurück: %s" % latest)
+            dialog.set_title("Secret chat updater")
+            dialog.set_property("text", "Error")
+            dialog.format_secondary_text("The search for a new version of Secret Chat failed. The server returned an invalid version: %s" % latest)
             dialog.show()
             dialog.run()
             dialog.destroy()
@@ -212,7 +212,7 @@ class MainWindow():
         if self.win_focused():
             self.save_window_size()
             self.window.hide()
-            self.menuItem1.set_label("Geheimchat öffnen")
+            self.menuItem1.set_label("Open secret chat")
         else:
             self.show_window()
 
@@ -222,20 +222,20 @@ class MainWindow():
         else:
             self.save_window_size()
             self.window.hide()
-            self.menuItem1.set_label("Geheimchat öffnen")
+            self.menuItem1.set_label("Open secret chat")
 
     def show_window(self, notification=None, event=None):
         self.window.present()
         self.window.show()
-        self.menuItem1.set_label("Minimieren")
+        self.menuItem1.set_label("Minimize")
 
     ### STATUSICON MENU ###
     def on_notifications_enable_toggled(self, widget):
         self.settings.set_boolean('notifications-enabled', not self.settings.get_boolean('notifications-enabled'))
         if self.settings.get_boolean('notifications-enabled'):
-            self.menuItem2.set_label("Benachrichtigungen aus")
+            self.menuItem2.set_label("Disable Notifications")
         else:
-            self.menuItem2.set_label("Benachrichtigungen an")
+            self.menuItem2.set_label("Enable Notifications")
 
     ### MORE ###
 
@@ -250,7 +250,7 @@ class MainWindow():
 
     def hide_main_window(self, widget):
         self.window.hide()
-        self.menuItem1.set_label("Geheimchat öffnen")
+        self.menuItem1.set_label("Open secret chat")
 
     def win_focused(self):
         try:
@@ -301,10 +301,10 @@ class AutoReceiverEngine(threading.Thread): # background
                     if self.appwin.settings.get_boolean("notifications-enabled") and not (self.initial_run or self.appwin.win_focused()):
                         if self.name != sender:
                             Gdk.threads_init()
-                            notification = Notify.Notification.new(f"Neue Nachricht von {sender}", f"{text}\n-- {date}", "hipchat")
+                            notification = Notify.Notification.new(f"New message from {sender}", f"{text}\n-- {date}", "hipchat")
                             notification.set_urgency(Notify.Urgency.CRITICAL)
                             notification.set_timeout(Notify.EXPIRES_NEVER)
-                            notification.add_action("show-window", "Anzeigen", self.appwin.show_window)
+                            notification.add_action("show-window", "Show", self.appwin.show_window)
                             notification.connect("closed", Gtk.main_quit)
                             notification.show()
                             Gtk.main()
