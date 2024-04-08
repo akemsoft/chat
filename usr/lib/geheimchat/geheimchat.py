@@ -151,17 +151,7 @@ class MainWindow():
     
     @idle
     def show_update_info(self, info, installed=None, latest=None, error=None):
-        if info == "uptodate":
-            dialog = Gtk.MessageDialog(message_type=Gtk.MessageType.INFO)
-            dialog.set_transient_for(self.window)
-            dialog.add_buttons(Gtk.STOCK_OK, Gtk.ResponseType.OK)
-            dialog.set_title("Secret chat updater")
-            dialog.set_property("text", "No update available")
-            dialog.format_secondary_text("You are using the latest version of Secret Chat (%s)" % installed)
-            dialog.show()
-            dialog.run()
-            dialog.destroy()
-        elif info == "outofdate":
+        if info == "outofdate":
             dialog = Gtk.MessageDialog(message_type=Gtk.MessageType.WARNING)
             dialog.set_transient_for(self.window)
             dialog.add_buttons("Ignorieren", Gtk.ResponseType.CANCEL, "Update", Gtk.ResponseType.YES)
