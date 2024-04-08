@@ -1,9 +1,0 @@
-Package: geheimchat
-Version: 1.0.5
-Architecture: all
-Maintainer: carlosmintfan <118076740+carlosmintfan@users.noreply.github.com>
-Installed-Size: 42
-Depends: python3, python3-gi, python3-pip, python3-requests, dconf-gsettings-backend | gsettings-backend
-Section: gnome
-Priority: optional
-Description: Der Akemsoft-Geheimchat
