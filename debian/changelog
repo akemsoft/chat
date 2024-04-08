@@ -1,3 +1,9 @@
+geheimchat (1.0.7) jammy; urgency=medium
+
+  * geheimchat.py: Translate leftover german string
+
+ -- akemmanuel <118383304+akemmanuel@users.noreply.github.com>  Mon, 08 Apr 2024 16:16:46 -0400
+
 geheimchat (1.0.6) jammy; urgency=medium
 
   * geheimchat.ui: Translate leftover german string
