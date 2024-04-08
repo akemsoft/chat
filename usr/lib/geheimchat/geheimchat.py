@@ -154,7 +154,7 @@ class MainWindow():
         if info == "outofdate":
             dialog = Gtk.MessageDialog(message_type=Gtk.MessageType.WARNING)
             dialog.set_transient_for(self.window)
-            dialog.add_buttons("Ignorieren", Gtk.ResponseType.CANCEL, "Update", Gtk.ResponseType.YES)
+            dialog.add_buttons("Ignore", Gtk.ResponseType.CANCEL, "Update", Gtk.ResponseType.YES)
             dialog.set_title("Secret chat updater")
             dialog.set_property("text", "Update available")
             dialog.format_secondary_text("You are NOT using the latest version of Secret Chat. Secret chat %s is available. (You are using secret chat %s)" % (latest, installed))
