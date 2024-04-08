@@ -1,16 +1,15 @@
-geheimchat (1.0.5) UNRELEASED; urgency=medium
+geheimchat (1.0.5) jammy; urgency=medium
 
   * geheimchat.ui: Add invisible charactar to the password entry
   * geheimchat.py: Notification fixes
 
- -- OEM Configuration (temporary user) <oem@DAVID>  Tue, 27 Feb 2024 20:14:09 -0300
+ -- akemmanuel <118383304+akemmanuel@users.noreply.github.com>  Tue, 27 Feb 2024 20:14:09 -0300
 
 geheimchat (1.0.4) jammy; urgency=medium
 
-  [ carlosmintfan ]
   * debian/control: Add a dependency on python3-pip
 
- -- OEM Configuration (temporary user) <oem@DAVID>  Tue, 27 Feb 2024 20:14:04 -0300
+ -- carlosmintfan <118076740+carlosmintfan@users.noreply.github.com>  Mon, 28 Aug 2023 16:25:51 -0400
 
 geheimchat (1.0.3) jammy; urgency=high
 
